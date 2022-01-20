@@ -1,4 +1,4 @@
-#include "DictionaryLoader.hpp"
+#include <t9trie/DictionaryLoader.hpp>
 
 #include <chrono>
 #include <iostream>
@@ -31,7 +31,7 @@ private:
 int main()
 {
     Timer t1;
-    auto trie = DictionaryLoader::loadFromFile("english.txt");
+    auto trie = T9::DictionaryLoader::loadFromFile("english.txt");
     std::cout << t1.stop() << std::endl;
 
     Timer t2;

@@ -1,15 +1,16 @@
 cmake_minimum_required(VERSION 3.19)
-project(t9)
+project(
+  T9Trie
+  VERSION 0.1
+  LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(t9
-    src/main.cpp
-    src/Trie.cpp
-    src/DictionaryLoader.cpp
-)
+add_subdirectory(src)
 
-add_executable(TEST_1
-    tests/trie_tests_main.cpp
-    src/Trie.cpp
-)
+include(CTest)
+if (BUILD_TESTING)
+    add_subdirectory(tests)
+endif()

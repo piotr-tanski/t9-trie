@@ -1,7 +1,9 @@
-#include "DictionaryLoader.hpp"
+#include <t9trie/DictionaryLoader.hpp>
 
 #include <fstream>
 
+namespace T9
+{
 Trie DictionaryLoader::loadFromFile(const std::filesystem::path &path)
 {
     std::ifstream infile(path);
@@ -14,7 +16,8 @@ Trie DictionaryLoader::loadFromFile(const std::filesystem::path &path)
     while (std::getline(infile, line))
     {
         std::transform(line.begin(), line.end(), line.begin(), ::tolower);
-        t.insert(line);
+        static_cast<void>(t.insert(line));
     }
     return t;
 }
+} // namespace T9

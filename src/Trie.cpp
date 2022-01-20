@@ -1,6 +1,7 @@
-#include <iostream>
-#include "Trie.hpp"
+#include <t9trie/Trie.hpp>
 
+namespace T9
+{
 namespace
 {
     constexpr auto toIndex(char character) noexcept {
@@ -39,17 +40,17 @@ Trie::~Trie() noexcept
     }
 }
 
-void Trie::insert(Word word)
+bool Trie::insert(Word word)
 {
     if (word.empty()) {
-        return;
+        return false;
     }
 
     Node *node = root.get();
     for (const auto character : word) {
         const auto index = toIndex(character);
         if (index == -1) {
-            return;
+            return false;
         }
 
         if (node->children[index] == nullptr) {
@@ -58,6 +59,7 @@ void Trie::insert(Word word)
         node = node->children[index];
     }
     node->words.push_back(std::move(word));
+    return true;
 }
 
 Words Trie::search(const std::vector<int> &numbers) const noexcept
@@ -75,3 +77,4 @@ Words Trie::search(const std::vector<int> &numbers) const noexcept
     }
     return node->words;
 }
+} // namespace T9

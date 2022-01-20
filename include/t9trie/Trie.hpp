@@ -5,8 +5,10 @@
 #include <utility>
 #include <vector>
 
+namespace T9
+{
 using Word = std::string;
-using Words = std::vector<std::string>;
+using Words = std::vector<Word>;
 
 class Trie
 {
@@ -18,7 +20,7 @@ public:
     Trie& operator=(Trie &&) noexcept = default;
     ~Trie() noexcept;
 
-    void insert(Word word);
+    [[nodiscard]] bool insert(Word word);
     [[nodiscard]] Words search(const std::vector<int> &numbers) const noexcept;
 
 private:
@@ -33,3 +35,4 @@ private:
 
     std::unique_ptr<Node> root;
 };
+} // namespace T9
