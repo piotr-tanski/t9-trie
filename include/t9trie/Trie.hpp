@@ -34,6 +34,5 @@ class Trie
     };
 
     std::unique_ptr<Node> root;
-    int abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc;
 };
 }  // namespace T9
