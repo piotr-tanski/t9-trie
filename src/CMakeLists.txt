@@ -5,8 +5,10 @@ set(HEADER_LIST
 
 add_library(t9trie DictionaryLoader.cpp Trie.cpp ${HEADER_LIST})
 add_library(t9::trie ALIAS t9trie)
+
 target_include_directories(t9trie PUBLIC "${T9Trie_SOURCE_DIR}/include")
 target_compile_features(t9trie PUBLIC cxx_std_17)
+target_compile_options(t9trie PRIVATE -W -Wall -Wextra -pedantic -pedantic-errors)
 
 source_group(
   TREE "${T9Trie_SOURCE_DIR}/include"
