@@ -7,23 +7,23 @@
 
 namespace T9
 {
-using Word = std::string;
+using Word  = std::string;
 using Words = std::vector<Word>;
 
 class Trie
 {
-public:
+   public:
     Trie();
-    Trie(const Trie&) = delete;
+    Trie(const Trie&)     = delete;
     Trie(Trie&&) noexcept = default;
-    Trie& operator=(const Trie &) = delete;
-    Trie& operator=(Trie &&) noexcept = default;
+    Trie& operator=(const Trie&) = delete;
+    Trie& operator=(Trie&&) noexcept = default;
     ~Trie() noexcept;
 
     [[nodiscard]] bool insert(Word word);
-    [[nodiscard]] Words search(const std::vector<int> &numbers) const noexcept;
+    [[nodiscard]] Words search(const std::vector<int>& numbers) const noexcept;
 
-private:
+   private:
     static constexpr inline auto MAX_CHILDREN_COUNT = 10;
     struct Node
     {
@@ -34,5 +34,6 @@ private:
     };
 
     std::unique_ptr<Node> root;
+    int abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc;
 };
-} // namespace T9
+}  // namespace T9

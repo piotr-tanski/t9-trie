@@ -1,13 +1,14 @@
-#include <t9trie/DictionaryLoader.hpp>
-
 #include <fstream>
+
+#include <t9trie/DictionaryLoader.hpp>
 
 namespace T9
 {
 Trie DictionaryLoader::loadFromFile(const std::filesystem::path &path)
 {
     std::ifstream infile(path);
-    if (!infile) {
+    if (!infile)
+    {
         throw LoadError("No such file");
     }
 
@@ -20,4 +21,4 @@ Trie DictionaryLoader::loadFromFile(const std::filesystem::path &path)
     }
     return t;
 }
-} // namespace T9
+}  // namespace T9

@@ -9,13 +9,13 @@ namespace T9
 {
 class LoadError : public std::runtime_error
 {
-public:
+   public:
     using std::runtime_error::runtime_error;
 };
 
 class DictionaryLoader
 {
-public:
+   public:
     static Trie loadFromFile(const std::filesystem::path &path);
 };
-} // namespace T9
+}  // namespace T9
