@@ -13,7 +13,7 @@ using Words = std::vector<Word>;
 class Trie
 {
    public:
-    Trie();
+    Trie()                = default;
     Trie(const Trie&)     = delete;
     Trie(Trie&&) noexcept = default;
     Trie& operator=(const Trie&) = delete;
@@ -33,6 +33,6 @@ class Trie
         Words words;
     };
 
-    std::unique_ptr<Node> root;
+    std::unique_ptr<Node> root = std::make_unique<Node>();
 };
 }  // namespace T9

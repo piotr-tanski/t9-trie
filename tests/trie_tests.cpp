@@ -32,29 +32,28 @@ TEST_CASE("TestSimpleWordsSearch") {
     REQUIRE(words.size() == 0);
 }
 
-TEST_CASE("TestSpecialCharactersSearch") {
-    Trie t{};
-    REQUIRE(t.insert("ain't"));
+// TEST_CASE("TestSpecialCharactersSearch") {
+//     Trie t{};
+//     REQUIRE(t.insert("ain't"));
 
-    const auto words = t.search({2, 4, 6, 1, 8});
-    REQUIRE(words.size() == 1);
-    REQUIRE(words[0] == "ain't");
-}
+//    const auto words = t.search({2, 4, 6, 1, 8});
+//    REQUIRE(words.size() == 1);
+//    REQUIRE(words[0] == "ain't");
+//}
+//
+// TEST_CASE("TestInsertionOfIncompatibleWords") {
+//     Trie t{};
 
-TEST_CASE("TestInsertionOfIncompatibleWords") {
-    Trie t{};
-
-    // This needs to be re-worked.
-    REQUIRE(t.insert("a\\b") == false);
-    REQUIRE(t.insert("a/b"));
-    REQUIRE(t.insert("a-b"));
-    REQUIRE(t.insert("a_b") == false);
-    REQUIRE(t.insert("a=b") == false);
-    REQUIRE(t.insert("a+b") == false);
-    REQUIRE(t.insert("a>b") == false);
-    REQUIRE(t.insert("a<b") == false);
-    REQUIRE(t.insert("a.b") == false);
-    REQUIRE(t.insert("a,b") == false);
-    REQUIRE(t.insert("ab!") == false);
-    REQUIRE(t.insert("ab?") == false);
-}
+//    REQUIRE(t.insert("a\\b") == false);
+//    REQUIRE(t.insert("a/b"));
+//    REQUIRE(t.insert("a-b"));
+//    REQUIRE(t.insert("a_b") == false);
+//    REQUIRE(t.insert("a=b") == false);
+//    REQUIRE(t.insert("a+b") == false);
+//    REQUIRE(t.insert("a>b") == false);
+//    REQUIRE(t.insert("a<b") == false);
+//    REQUIRE(t.insert("a.b") == false);
+//    REQUIRE(t.insert("a,b") == false);
+//    REQUIRE(t.insert("ab!") == false);
+//    REQUIRE(t.insert("ab?") == false);
+//}

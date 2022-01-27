@@ -8,10 +8,6 @@ constexpr auto toIndex(char character) noexcept
 {
     switch (character)
     {
-        case '\'':
-        case '-':
-        case '/':
-            return 1;
         case 'a':
         case 'b':
         case 'c':
@@ -63,11 +59,6 @@ void Trie::Node::free()
             child = nullptr;
         }
     }
-}
-
-Trie::Trie()
-    : root(std::make_unique<Node>())
-{
 }
 
 Trie::~Trie() noexcept
