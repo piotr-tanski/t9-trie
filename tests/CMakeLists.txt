@@ -7,8 +7,10 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(catch)
 
-add_executable(trie_tests trie_tests.cpp)
-target_compile_features(trie_tests PRIVATE cxx_std_17)
-target_link_libraries(trie_tests PRIVATE t9::trie Catch2::Catch2)
+add_executable(t9_tests t9_tests.cpp)
+target_compile_features(t9_tests PRIVATE cxx_std_17)
+target_link_libraries(t9_tests PRIVATE t9::t9 Catch2::Catch2)
 
-add_test(NAME trietests COMMAND trie_tests)
+add_test(NAME t9_tests COMMAND t9_tests)
+
+configure_file("${CMAKE_SOURCE_DIR}/dictionaries/english.txt" "${CMAKE_CURRENT_BINARY_DIR}/english.txt" COPYONLY)

@@ -1,16 +1,12 @@
 #pragma once
 
+#include <t9trie/Dictionary.hpp>
+
 #include <memory>
-#include <string>
-#include <utility>
-#include <vector>
 
 namespace T9
 {
-using Word  = std::string;
-using Words = std::vector<Word>;
-
-class Trie
+class Trie : public Dictionary
 {
    public:
     Trie()                = default;
@@ -20,11 +16,11 @@ class Trie
     Trie& operator=(Trie&&) noexcept = default;
     ~Trie() noexcept;
 
-    [[nodiscard]] bool insert(Word word);
-    [[nodiscard]] Words search(const std::vector<int>& numbers) const noexcept;
+    [[nodiscard]] bool insert(Word word) override;
+    [[nodiscard]] Words search(const NumberSequence& numbers) const noexcept override;
 
    private:
-    static constexpr inline auto MAX_CHILDREN_COUNT = 10;
+    static constexpr inline auto MAX_CHILDREN_COUNT = 8;
     struct Node
     {
         void free();

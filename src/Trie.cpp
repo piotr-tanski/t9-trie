@@ -1,52 +1,57 @@
-#include <t9trie/Trie.hpp>
+#include "Trie.hpp"
 
 namespace T9
 {
 namespace
 {
-constexpr auto toIndex(char character) noexcept
+constexpr int toIndex(char character) noexcept
 {
     switch (character)
     {
         case 'a':
         case 'b':
         case 'c':
-            return 2;
+            return 0;
         case 'd':
         case 'e':
         case 'f':
-            return 3;
+            return 1;
         case 'g':
         case 'h':
         case 'i':
-            return 4;
+            return 2;
         case 'j':
         case 'k':
         case 'l':
-            return 5;
+            return 3;
         case 'm':
         case 'n':
         case 'o':
-            return 6;
+            return 4;
         case 'p':
         case 'q':
         case 'r':
         case 's':
-            return 7;
+            return 5;
         case 't':
         case 'u':
         case 'v':
-            return 8;
+            return 6;
         case 'w':
         case 'x':
         case 'y':
         case 'z':
-            return 9;
+            return 7;
         default:
             return -1;
     }
 }
-}  // namespace
+
+constexpr int indexFromNumber(int number)
+{
+    return number - 2;
+}
+} // namespace
 
 void Trie::Node::free()
 {
@@ -95,7 +100,7 @@ bool Trie::insert(Word word)
     return true;
 }
 
-Words Trie::search(const std::vector<int> &numbers) const noexcept
+Words Trie::search(const NumberSequence &numbers) const noexcept
 {
     if (numbers.empty())
     {
@@ -103,8 +108,9 @@ Words Trie::search(const std::vector<int> &numbers) const noexcept
     }
 
     auto node = root.get();
-    for (const auto index : numbers)
+    for (const auto number : numbers)
     {
+        const auto index = indexFromNumber(number);
         if (node->children[index] == nullptr)
         {
             return {};
