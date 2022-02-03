@@ -4,47 +4,14 @@ namespace T9
 {
 namespace
 {
-constexpr int toIndex(char character) noexcept
+constexpr int toChildIndex(char character) noexcept
 {
-    switch (character)
+    const auto index = toIndex(character);
+    if (index == -1)
     {
-        case 'a':
-        case 'b':
-        case 'c':
-            return 0;
-        case 'd':
-        case 'e':
-        case 'f':
-            return 1;
-        case 'g':
-        case 'h':
-        case 'i':
-            return 2;
-        case 'j':
-        case 'k':
-        case 'l':
-            return 3;
-        case 'm':
-        case 'n':
-        case 'o':
-            return 4;
-        case 'p':
-        case 'q':
-        case 'r':
-        case 's':
-            return 5;
-        case 't':
-        case 'u':
-        case 'v':
-            return 6;
-        case 'w':
-        case 'x':
-        case 'y':
-        case 'z':
-            return 7;
-        default:
-            return -1;
+        return -1;
     }
+    return index - 2;
 }
 
 constexpr int indexFromNumber(int number)
@@ -84,7 +51,7 @@ bool Trie::insert(Word word)
     Node *node = root.get();
     for (const auto character : word)
     {
-        const auto index = toIndex(character);
+        const auto index = toChildIndex(character);
         if (index == -1)
         {
             return false;
