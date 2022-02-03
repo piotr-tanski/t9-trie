@@ -15,6 +15,7 @@ add_subdirectory(src)
 
 if (TRIE_OPT_BUILD_TESTS)
     enable_testing()
+    add_subdirectory(standalone_app)
     add_subdirectory(examples)
     add_subdirectory(tests)
     add_subdirectory(benchmarks)
