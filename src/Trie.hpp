@@ -14,7 +14,7 @@ class Trie : public Dictionary
     Trie(Trie&&) noexcept = default;
     Trie& operator=(const Trie&) = delete;
     Trie& operator=(Trie&&) noexcept = default;
-    ~Trie() noexcept;
+    ~Trie() noexcept override;
 
     [[nodiscard]] bool insert(Word word) override;
     [[nodiscard]] Words search(const NumberSequence& numbers) const noexcept override;

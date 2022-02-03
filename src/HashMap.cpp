@@ -55,19 +55,28 @@ bool HashMap::insert(Word word)
         return false;
     }
 
-    std::uint64_t key = 0;
-    for (const auto character : word)
+    const auto key = keyFromChars(word);
+    if (!key.has_value())
+    {
+        return false;
+    }
+    dictionary[key.value()].push_back(word);
+    return true;
+}
+
+std::optional<HashMap::DictionaryKey> HashMap::keyFromChars(const Word &chars) noexcept
+{
+    DictionaryKey key = 0;
+    for (const auto character : chars)
     {
         const auto index = toIndex(character);
         if (index == -1)
         {
-            return false;
+            return std::nullopt;
         }
-
         key = key * 10 + index;
     }
-    dictionary[key].push_back(word);
-    return true;
+    return key;
 }
 
 Words HashMap::search(const NumberSequence &numbers) const noexcept
@@ -77,17 +86,22 @@ Words HashMap::search(const NumberSequence &numbers) const noexcept
         return {};
     }
 
-    std::uint64_t key = 0;
-    for (const auto number : numbers)
-    {
-        key = key * 10 + number;
-    }
-
+    const auto key = keyFromNumbers(numbers);
     try {
         return dictionary.at(key);
     }
     catch (const std::out_of_range &) {
         return {};
     }
+}
+
+HashMap::DictionaryKey HashMap::keyFromNumbers(const NumberSequence &numbers) noexcept
+{
+    DictionaryKey key = 0;
+    for (const auto number : numbers)
+    {
+        key = key * 10 + number;
+    }
+    return key;
 }
 }  // namespace T9
