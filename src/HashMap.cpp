@@ -1,5 +1,7 @@
 #include "HashMap.hpp"
 
+#include <stdexcept>
+
 namespace T9
 {
 bool HashMap::insert(Word word)
