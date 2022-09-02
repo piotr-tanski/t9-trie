@@ -2,6 +2,8 @@
 
 #include <t9trie/DictionaryLoader.hpp>
 
+#include <sstream>
+
 static void TrieDictionaryLoad10k(benchmark::State& state) {
     for (auto _ : state) {
         benchmark::DoNotOptimize(T9::DictionaryLoader::loadFromFile("./10k_english.txt", T9::DictionaryImplementation::Trie));
